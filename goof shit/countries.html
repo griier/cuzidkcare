@@ -3,14 +3,29 @@
   <head>
     <title>Countries</title>
     <link rel="stylesheet" href="greece.css" />
+    <link rel="stylesheet" href="chatbox.css" />
     <style>
       body {
         background-color: #ffa500;
       }
+
       h1 {
         color: white;
         text-align: center;
       }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      .bubble-container {
+        /* width: 100%;
+        height: 100%; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .country-bubble {
         display: inline-block;
         margin: 20px;
@@ -20,37 +35,61 @@
         box-shadow: 5px 5px 10px #888888;
         transition: transform 0.2s;
         cursor: pointer;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        animation: circle 10s linear infinite;
       }
+
       .country-bubble:hover {
         transform: scale(1.1);
       }
+
       .country-img {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: 50%;
       }
+
       .country-name {
         text-align: center;
         margin-top: 10px;
         font-weight: bold;
         font-size: 1.2em;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @keyframes circle {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg) translateX(250px)
+            rotate(0deg);
+        }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg) translateX(250px)
+            rotate(-360deg);
+        }
       }
     </style>
   </head>
   <body>
     <h1>Countries</h1>
-    <div class="country-bubble" id="greece">
-      <a href="greece.html">
-        <img src="greece.jpg" class="country-img" alt="Greece" />
-        <div class="country-name">Greece</div>
-      </a>
-    </div>
-    <div class="country-bubble">
-      <a href="latvia.html">
-        <img src="latvia.jpg" class="country-img" alt="Latvia" />
-        <div class="country-name">Latvia</div>
-      </a>
+    <div class="bubble-container">
+      <div class="country-bubble" id="greece">
+        <a href="greece.html">
+          <img src="greece.jpg" class="country-img" alt="Greece" />
+          <div class="country-name">Greece</div>
+        </a>
+      </div>
+      <div class="country-bubble">
+        <a href="latvia.html">
+          <img src="latvia.jpg" class="country-img" alt="Latvia" />
+          <div class="country-name">Latvia</div>
+        </a>
+      </div>
     </div>
     <a href="joks.html"><div class="goback">GO BACK</div></a>
     <div id="chatbox"></div>
