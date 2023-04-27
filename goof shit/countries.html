@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countries</title>
+    <link rel="stylesheet" href="greece.css" />
+    <style>
+      body {
+        background-color: #ffa500;
+      }
+      h1 {
+        color: white;
+        text-align: center;
+      }
+      .country-bubble {
+        display: inline-block;
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 5px 5px 10px #888888;
+        transition: transform 0.2s;
+        cursor: pointer;
+      }
+      .country-bubble:hover {
+        transform: scale(1.1);
+      }
+      .country-img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      .country-name {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Countries</h1>
+    <div class="country-bubble" id="greece">
+      <a href="greece.html">
+        <img src="greece.jpg" class="country-img" alt="Greece" />
+        <div class="country-name">Greece</div>
+      </a>
+    </div>
+    <div class="country-bubble">
+      <a href="latvia.html">
+        <img src="latvia.jpg" class="country-img" alt="Latvia" />
+        <div class="country-name">Latvia</div>
+      </a>
+    </div>
+    <a href="joks.html"><div class="goback">GO BACK</div></a>
+    <div id="chatbox"></div>
+    <div id="chatbox">
+      <div id="messages"></div>
+      <input type="text" id="input" placeholder="Type your message" />
+      <button id="send">Send</button>
+    </div>
+
+    <script>
+      const messages = document.getElementById("messages");
+      const input = document.getElementById("input");
+      const send = document.getElementById("send");
+
+      function addMessage(message, sender) {
+        const div = document.createElement("div");
+        const label = document.createElement("label");
+        const text = document.createElement("p");
+        label.textContent = sender;
+        text.textContent = message;
+        div.appendChild(label);
+        div.appendChild(text);
+        messages.appendChild(div);
+      }
+
+      send.addEventListener("click", function () {
+        const message = input.value;
+        if (message.trim() !== "") {
+          addMessage(message, "You");
+          input.value = "";
+        }
+      });
+
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          const message = input.value;
+          if (message.trim() !== "") {
+            addMessage(message, "You");
+            input.value = "";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
